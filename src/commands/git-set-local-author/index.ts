@@ -5,7 +5,7 @@ import { ICommandMediator } from "../../contracts/mediator";
 import consoleLogger from "../../providers/console-logger";
 import { IParams } from "./types";
 
-export class GitSetLocalAuthor implements ICommand<IParams> {
+export class GitSetLocalAuthorCommand implements ICommand<IParams> {
   constructor(protected readonly logger: ILogger) {}
 
   public async execute(payload: IParams, commands: ICommandMediator) {
@@ -14,4 +14,4 @@ export class GitSetLocalAuthor implements ICommand<IParams> {
   }
 }
 
-export default new GitSetLocalAuthor(consoleLogger);
+export default new GitSetLocalAuthorCommand(consoleLogger);

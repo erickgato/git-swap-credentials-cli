@@ -2,13 +2,15 @@ import { CommandNotFoundException } from "./../exceptions/command-not-found.exce
 import { ICommand } from "../contracts/command";
 import { ICommandMediator } from "../contracts/mediator";
 import { tap } from "lodash";
-import swapCommand from "../commands/swap";
 import { Command } from "../constants/commands";
-import gitSetLocalAuthor from "../commands/git-set-local-author";
-import gitSetLocalCredentials from "../commands/git-set-local-credentials";
-import gitStoreCredentials from "../commands/git-store-credentials";
-import listProfiles from "../commands/list-profiles";
-import getProfileToken from "../commands/get-profile-token";
+import {
+  getProfileToken,
+  swap,
+  gitSetLocalAuthor,
+  gitSetLocalCredentials,
+  gitStoreCredentials,
+  listProfiles,
+} from "../commands";
 
 export class CommandMediator implements ICommandMediator {
   constructor(
@@ -34,7 +36,7 @@ export class CommandMediator implements ICommandMediator {
 }
 
 export default tap(new CommandMediator(), (mediator) => {
-  mediator.add(Command.SWAP, swapCommand);
+  mediator.add(Command.SWAP, swap);
   mediator.add(Command.GIT_SET_LOCAL_AUTHOR, gitSetLocalAuthor);
   mediator.add(Command.GIT_SET_LOCAL_CREDENTIALS, gitSetLocalCredentials);
   mediator.add(Command.GIT_STORE_CREDENTIALS, gitStoreCredentials);
