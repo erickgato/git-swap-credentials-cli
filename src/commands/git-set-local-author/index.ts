@@ -1,3 +1,4 @@
+import { execSync } from "child_process";
 import { ICommand } from "../../contracts/command";
 import { ILogger } from "../../contracts/logger";
 import { ICommandMediator } from "../../contracts/mediator";
@@ -8,9 +9,8 @@ export class GitSetLocalAuthor implements ICommand<IParams> {
   constructor(protected readonly logger: ILogger) {}
 
   public async execute(payload: IParams, commands: ICommandMediator) {
-    console.log(payload, commands);
-    console.log(process.cwd());
-    console.log(__dirname);
+    execSync(`git config user.name ${payload.username}`);
+    execSync(`git config user.email ${payload.email}`);
   }
 }
 
