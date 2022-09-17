@@ -6,3 +6,9 @@ Used to swap git credentials in the same computer
 
     1. Nodejs
     2. Typescript
+
+### OS
+
+    [x] - Linux
+    [x] - MacOs
+    [] - Windows
